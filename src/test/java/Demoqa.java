@@ -23,7 +23,7 @@ public class Demoqa {
         String email = "hello@world.com";
         String gender = "Female";
         String phone = "1234567890";
-        String subjects = "subjects";
+        String subjects = "Maths";
         String hobbies = "Music";
         String pictureUrl = "ws_Hidden_Sun_&_Wheat_Field_640x960.jpg";
         String currentAddress = "currentAddress";
@@ -49,8 +49,9 @@ public class Demoqa {
         $(byText(birthDateMonth)).click();
         $(".react-datepicker__day--0" + birthDateDay).click();
         $("#subjectsContainer input").setValue(subjects);
+        $(".subjects-auto-complete__menu").$(byText(subjects)).click();
         $("#hobbiesWrapper").$(byText(hobbies)).click();
-        $("input#uploadPicture").uploadFile(new File("src/" + pictureUrl));
+        $("input#uploadPicture").uploadFile(new File("src/test/resources/" + pictureUrl));
         $("#currentAddress").setValue(currentAddress);
         $(byText("Select State")).click();
         $(byText(state)).click();
@@ -67,7 +68,6 @@ public class Demoqa {
         $$(".table-responsive tr").findBy(text("Picture" + " " + pictureUrl)).shouldBe(visible);
         $$(".table-responsive tr").findBy(text("Address" + " " + currentAddress)).shouldBe(visible);
         $$(".table-responsive tr").findBy(text("State and City" + " " + state + " " + city)).shouldBe(visible);
-        //next will fail due to "Subjects" input works incorrectly
         $$(".table-responsive tr").findBy(text("Subjects" + " " + subjects)).shouldBe(visible);
     }
 }
